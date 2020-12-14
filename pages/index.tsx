@@ -1,11 +1,12 @@
-import React from "react";
 import SplitPane from "react-split-pane";
+
+import { Editor } from "../components/Editors";
 
 const Index =  () => {
   return (
     <SplitPane split="vertical" minSize={"50%"}>
-        <div>Part 1</div>
-        <div>Part 2</div>
+        <Editor title="ES6"/>
+        <div>Hello, World!</div>
     </SplitPane>
   );
 };
