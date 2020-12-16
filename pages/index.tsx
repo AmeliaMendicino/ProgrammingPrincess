@@ -1,12 +1,16 @@
-import SplitPane from "react-split-pane";
+import dynamic from 'next/dynamic'
+import SplitPane from 'react-split-pane';
 
-import { Editor } from "../components/Editors";
+const DynamicJavascriptEditor = dynamic<any>(
+  () => import('../components/Editors').then(mod => mod.JavascriptEditor),
+  { ssr: false }
+)
 
-const Index =  () => {
+const Index = () => {
   return (
     <SplitPane split="vertical" minSize={"50%"}>
-        <Editor title="ES6"/>
-        <div>Hello, World!</div>
+      <DynamicJavascriptEditor />
+      <div>Hello, World!</div>
     </SplitPane>
   );
 };
