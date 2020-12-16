@@ -16,13 +16,13 @@ type EditorProps = {
 const Editor = ({ mode, title }: EditorProps) => {
   return (
     <div className={styles.editorContainer}>
-      <div className={styles.editorTitle}>{title}</div>
       <AceEditor
         mode={mode}
         theme="monokai"
         name={title}
         fontSize={18}
         width={"100%"}
+        height={"100%"}
         showPrintMargin={true}
         showGutter={true}
         tabSize={2}

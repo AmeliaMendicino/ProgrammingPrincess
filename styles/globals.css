@@ -1,35 +1,16 @@
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div,
+div#__next > div > div {
+	height:100%;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	overflow-y: hidden;
+}
+
 body {
     margin: 0px;
-}
-.Resizer {
-    z-index: 10000;
-    box-sizing: border-box;
-    background-clip: padding-box;
-}
-
-.Resizer:hover {
-    transition: all 2s ease;
-    border: 10px solid #333642;
-}
-
-.Resizer.horizontal {
-    height: 11px;
-    margin: -5px 0;
-    cursor: row-resize;
-    width: 100%;
-    border: 8px solid #333642;
-}
-
-.Resizer.vertical {
-    margin: 0 -5px;
-
-    cursor: col-resize;
-    border: 8px solid #333642;
-}
-
-.Resizer.disabled {
-    cursor: not-allowed;
-}
-.Resizer.disabled:hover {
-    border-color: transparent;
 }
