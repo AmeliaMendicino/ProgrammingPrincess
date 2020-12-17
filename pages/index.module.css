@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  background: #272822;
+}
+
+@media (max-width: 600px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+.previewIframe {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+}

@@ -1,25 +1,27 @@
+import { ChangeEvent, FunctionComponent } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 
 import styles from "./Editors.module.css";
 
-export const JavascriptEditor = () => {
-  return <Editor mode="javascript" title={"JS"} />;
+export type JavascriptEditorProps = {
+  onChange: (value: string, event: ChangeEvent) => void;
+  value: string;
 };
 
-type EditorProps = {
-  mode: string;
-  title: string;
-};
-
-const Editor = ({ mode, title }: EditorProps) => {
+export const JavascriptEditor: FunctionComponent<JavascriptEditorProps> = ({
+  onChange,
+  value,
+}: JavascriptEditorProps) => {
   return (
     <div className={styles.editorContainer}>
       <AceEditor
-        mode={mode}
+        mode="javascript"
         theme="monokai"
-        name={title}
+        name="JS"
+        onChange={onChange}
+        value={value}
         fontSize={18}
         width={"100%"}
         height={"100%"}
