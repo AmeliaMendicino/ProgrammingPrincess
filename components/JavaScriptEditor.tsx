@@ -3,17 +3,17 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 
-import styles from "./Editors.module.css";
+import styles from "../styles/JavaScriptEditor.module.css";
 
-export type JavascriptEditorProps = {
+export type JavaScriptEditorProps = {
   onChange: (value: string, event: ChangeEvent) => void;
   value: string;
 };
 
-export const JavascriptEditor: FunctionComponent<JavascriptEditorProps> = ({
+export const JavaScriptEditor: FunctionComponent<JavaScriptEditorProps> = ({
   onChange,
   value,
-}: JavascriptEditorProps) => {
+}: JavaScriptEditorProps) => {
   return (
     <div className={styles.editorContainer}>
       <AceEditor
