@@ -1,8 +1,11 @@
-import * as esprima from "esprima";
+import * as espree from "espree";
 
-type Variable = {
+export type Variable = {
 	name: string;
 	kind: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	value?: any;
+	type?: string;
 };
 
 /**
@@ -15,46 +18,41 @@ type Variable = {
 export function getVariables(javascript: string): Variable[] {
 	const vars: Variable[] = [];
 
-	try {
-		const tree = esprima.parseScript(javascript, {
-			loc: true,
-			tolerant: true,
-		});
+	const tree = espree.parse(javascript, {
+		loc: true,
+		ecmaVersion: 9,
+	});
 
-		tree.body.forEach((node) => {
-			const  { type, declarations = [], kind = "" } = node;
-			if (type === "VariableDeclaration") {
-				declarations.forEach((vd) => {
-					const { type, name = "", properties = [] } = vd.id;
-					switch (type) {
-						case "ObjectPattern":
-							// Object destructuring assignment: const { foo } = obj;
-							properties.forEach((p) => {
-								const {
-									value: { type, name = "", left = {} },
-								} = p;
-								switch (type) {
-									case "AssignmentPattern":
-										// Assigning to new variables names and providing default values: const { foo: f = "foo" } = obj;
-										vars.push({ name: left.name, kind });
-										break;
-									case "Identifier":
-										vars.push({ name, kind });
-										break;
-								}
-							});
-							break;
-						case "Identifier":
-							vars.push({ name, kind });
-							break;
-					}
-				});
-			}
-		});
-	} catch (error) {
-		// parseScript will sometimes throw errors if it gets exceptionally mangled js,
-		console.log(error);
-	}
+	tree.body.forEach((node) => {
+		const { type, declarations = [], kind = "" } = node;
+		if (type === "VariableDeclaration") {
+			declarations.forEach((vd) => {
+				const { type, name = "", properties = [] } = vd.id;
+				switch (type) {
+					case "ObjectPattern":
+						// Object destructuring assignment: const { foo } = obj;
+						properties.forEach((p) => {
+							const {
+								value: { type, name = "", left = {} },
+							} = p;
+							switch (type) {
+								case "AssignmentPattern":
+									// Assigning to new variables names and providing default values: const { foo: f = "foo" } = obj;
+									vars.push({ name: left.name, kind });
+									break;
+								case "Identifier":
+									vars.push({ name, kind });
+									break;
+							}
+						});
+						break;
+					case "Identifier":
+						vars.push({ name, kind });
+						break;
+				}
+			});
+		}
+	});
 
 	return vars;
 }

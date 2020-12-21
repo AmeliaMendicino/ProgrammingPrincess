@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ace-builds": "^1.4.12",
-    "esprima": "^4.0.1",
+    "espree": "^7.3.1",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-ace": "^9.2.1",
