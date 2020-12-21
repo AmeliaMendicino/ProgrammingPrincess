@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0.5em;
+}
+
+.gem {
+  position: relative;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0.5em;
+}
+
+.gemText {
+  position: absolute;
+  color: #292f33;
+}
+
+.variableText {
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.svgGem {
+  width: 98px;
+}
+
+.blueText {
+  color: #00a2d8;
+}
+
+.blueGem {
+  filter: invert(66%) sepia(54%) saturate(4940%) hue-rotate(161deg) brightness(103%) contrast(105%);
+}
+
+.pinkText {
+  color: #f873b6;
+}
+
+.pinkGem {
+  filter: invert(64%) sepia(40%) saturate(2022%) hue-rotate(293deg) brightness(102%) contrast(95%);
+}
