@@ -5,3 +5,9 @@
   padding-left: 5px;
   position: relative;
 }
+
+@media (max-width: 600px) {
+  .editorContainer {
+    min-height: 50%;
+  }
+}
