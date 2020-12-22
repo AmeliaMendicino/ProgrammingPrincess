@@ -32,6 +32,38 @@
   width: 98px;
 }
 
+.redText {
+  color: #f70100;
+}
+
+.redGem {
+  filter: invert(23%) sepia(99%) saturate(7458%) hue-rotate(1deg) brightness(107%) contrast(117%);
+}
+
+.orangeText {
+  color: #f79501;
+}
+
+.orangeGem {
+  filter: invert(50%) sepia(93%) saturate(1641%) hue-rotate(11deg) brightness(106%) contrast(111%);
+}
+
+.yellowText {
+  color: #f5f700;
+}
+
+.yellowGem {
+  filter: invert(75%) sepia(99%) saturate(471%) hue-rotate(14deg) brightness(119%) contrast(108%);
+}
+
+.greenText {
+  color: #00b946;
+}
+
+.greenGem {
+  filter: invert(45%) sepia(69%) saturate(1383%) hue-rotate(109deg) brightness(94%) contrast(102%);
+}
+
 .blueText {
   color: #00a2d8;
 }
@@ -40,10 +72,42 @@
   filter: invert(66%) sepia(54%) saturate(4940%) hue-rotate(161deg) brightness(103%) contrast(105%);
 }
 
+.navyText {
+  color: #0059bd;
+}
+
+.navyGem {
+  filter: invert(14%) sepia(100%) saturate(6791%) hue-rotate(205deg) brightness(93%) contrast(101%);
+}
+
+.purpleText {
+  color: #9e2adb;
+}
+
+.purpleGem {
+  filter: invert(27%) sepia(52%) saturate(2263%) hue-rotate(264deg) brightness(94%) contrast(111%);
+}
+
 .pinkText {
   color: #f873b6;
 }
 
 .pinkGem {
   filter: invert(64%) sepia(40%) saturate(2022%) hue-rotate(293deg) brightness(102%) contrast(95%);
+}
+
+.grayText {
+  color: #bababa;
+}
+
+.grayGem {
+  filter: invert(97%) sepia(1%) saturate(1164%) hue-rotate(319deg) brightness(77%) contrast(93%);
+}
+
+.blackText {
+  color: #171819;
+}
+
+.blackGem {
+  filter: invert(7%) sepia(0%) saturate(1496%) hue-rotate(63deg) brightness(93%) contrast(93%);
 }
