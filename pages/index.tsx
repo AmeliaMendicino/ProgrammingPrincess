@@ -31,7 +31,6 @@ const Index: FunctionComponent = () => {
     let varValues = "";
     try {
       vars = getVariables(debouncedJs);
-      setVariables(vars);
       varValues = vars
         .map(
           (v) => `${JSON.stringify(v)}`.slice(0, -1) + `, "value": ${v.name}, "type": typeof ${v.name}}`
