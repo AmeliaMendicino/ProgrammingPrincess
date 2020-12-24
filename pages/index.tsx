@@ -35,7 +35,7 @@ const Index: FunctionComponent = () => {
         .map(
           (v) =>
             `${JSON.stringify(v)}`.slice(0, -1) +
-            `, "value": ${v.name}, "type": typeof ${v.name}}`
+            `, "value": typeof ${v.name} == "symbol" || typeof ${v.name} == "function" ? ${v.name}.toString() : ${v.name}, "type": typeof ${v.name}}`
         )
         .join(", ");
 
