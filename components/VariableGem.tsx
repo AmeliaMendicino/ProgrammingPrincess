@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { Fragment, FunctionComponent } from "react";
 import { HexagonGem } from "./Gems/HexagonGem";
 import { OctogonGem } from "./Gems/OctogonGem";
 import { DiamondGem } from "./Gems/DiamondGem";
@@ -82,7 +82,21 @@ export const VariableGem: FunctionComponent<GemProps> = ({
     <figure className={styles.container}>
       <figure className={styles.gem}>
         <figcaption className={styles.gemText}>
-          {JSON.stringify(displayValue)}
+          {["function", "symbol", "bigint"].includes(type) ? (
+            <pre className={type === "function" ? styles.functionText : ""}>
+              {JSON.stringify(displayValue)
+                .slice(1, -1)
+                .split("\\n")
+                .map((item, key) => (
+                  <Fragment key={key}>
+                    {item.replace(/\\"/g, '"')}
+                    <br />
+                  </Fragment>
+                ))}
+            </pre>
+          ) : (
+            JSON.stringify(displayValue)
+          )}
         </figcaption>
         <GemShape color={color} />
         <Sparkle className={styles.sparkle1} />

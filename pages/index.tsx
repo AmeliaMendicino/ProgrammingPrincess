@@ -21,7 +21,6 @@ const Index: FunctionComponent = () => {
   const [jsValue, setJsValue] = useState("");
   const [outputValue, setOutputValue] = useState("");
   const [variables, setVariables] = useState<Variable[]>([]);
-  const [iframeRef, setiframeRef] = useState(null);
   const [error, setError] = useState("");
 
   const debouncedJs = useDebounce(jsValue, 1000);
@@ -71,12 +70,11 @@ const Index: FunctionComponent = () => {
         setError(error);
       }
     });
-  }, [iframeRef]);
+  }, []);
 
   return (
     <>
       <iframe
-        ref={setiframeRef}
         sandbox="allow-scripts allow-same-origin"
         srcDoc={outputValue}
         className={styles.iframe}
