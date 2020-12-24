@@ -3,6 +3,7 @@ import { HexagonGem } from "./Gems/HexagonGem";
 import { OctogonGem } from "./Gems/OctogonGem";
 import { DiamondGem } from "./Gems/DiamondGem";
 import { TriGem } from "./Gems/TriGem";
+import { Sparkle } from "./Gems/Sparkle";
 
 import styles from "../styles/Gems.module.css";
 
@@ -84,8 +85,12 @@ export const VariableGem: FunctionComponent<GemProps> = ({
           {JSON.stringify(displayValue)}
         </figcaption>
         <GemShape color={color} />
+        <Sparkle className={styles.sparkle1} />
+        <Sparkle className={styles.sparkle2} />
       </figure>
-      <figcaption className={[styles.variableText, styles[`${color}Text`]].join(" ")}>
+      <figcaption
+        className={[styles.variableText, styles[`${color}Text`]].join(" ")}
+      >
         {name}
       </figcaption>
     </figure>

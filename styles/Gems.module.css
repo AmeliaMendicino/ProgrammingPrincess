@@ -21,7 +21,7 @@
 
 .gemText {
   position: absolute;
-  color: #292f33;
+  color: #fff;
 }
 
 .variableText {
@@ -30,6 +30,35 @@
 
 .svgGem {
   width: 98px;
+}
+
+.sparkle1,
+.sparkle2 {
+  position: absolute;
+  animation-duration: 4s;
+  animation-name: sparkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.sparkle1 {
+  width: 30px;
+  bottom: 55px;
+  left: 50px;
+}
+
+.sparkle2 {
+  animation-delay: 400ms;
+  width: 20px;
+  top: 65px;
+  right: 55px;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; }
+  80% { opacity: 0; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .redText {

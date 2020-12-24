@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  background: #fff;
+  background: #272822;
 }
 
 @media (max-width: 600px) {
