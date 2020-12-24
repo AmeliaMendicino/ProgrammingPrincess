@@ -1,12 +1,37 @@
+// @ts-ignore: Espree doesn't have typings
 import * as espree from "espree";
 
-export type Variable = {
+export type VariableNames = {
 	name: string;
 	kind: string;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	value?: any;
-	type?: string;
 };
+
+export type Variable = VariableNames & {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	value: any;
+	type: string;
+};
+
+type VariableDeclaration = {
+	id: Declaration;
+};
+
+interface Node {
+	type: string;
+	kind: string;
+	declarations: VariableDeclaration[];
+}
+
+interface Declaration {
+	id: string;
+	type: string;
+	name: string;
+	properties: Property[];
+}
+
+interface Property {
+	value: { type: string, name: string, left: { name: string } }
+}
 
 /**
  * Takes a JavaScript program string and extracts the variables from
@@ -15,15 +40,15 @@ export type Variable = {
  * @param {string} javascript A JavaScript program string
  * @returns {Variable[]} An array of variable names and what kind they are
  */
-export function getVariables(javascript: string): Variable[] {
-	const vars: Variable[] = [];
+export function getVariables(javascript: string): VariableNames[] {
+	const vars: VariableNames[] = [];
 
 	const tree = espree.parse(javascript, {
 		loc: true,
 		ecmaVersion: 9,
 	});
 
-	tree.body.forEach((node) => {
+	tree.body.forEach((node: Node) => {
 		const { type, declarations = [], kind = "" } = node;
 		if (type === "VariableDeclaration") {
 			declarations.forEach((vd) => {
@@ -33,7 +58,7 @@ export function getVariables(javascript: string): Variable[] {
 						// Object destructuring assignment: const { foo } = obj;
 						properties.forEach((p) => {
 							const {
-								value: { type, name = "", left = {} },
+								value: { type, name = "", left = { name: "" } },
 							} = p;
 							switch (type) {
 								case "AssignmentPattern":
