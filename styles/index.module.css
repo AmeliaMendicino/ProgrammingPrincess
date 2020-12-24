@@ -18,3 +18,44 @@
 .iframe {
   display: none;
 }
+
+.error {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #f48fb0;
+  border-radius: 20px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  bottom: 10px;
+  right: 2em;
+}
+
+.errorShow {
+  visibility: visible;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 10px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 10px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

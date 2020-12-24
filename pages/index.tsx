@@ -33,16 +33,15 @@ const Index: FunctionComponent = () => {
       vars = getVariables(debouncedJs);
       varValues = vars
         .map(
-          (v) => `${JSON.stringify(v)}`.slice(0, -1) + `, "value": ${v.name}, "type": typeof ${v.name}}`
+          (v) =>
+            `${JSON.stringify(v)}`.slice(0, -1) +
+            `, "value": ${v.name}, "type": typeof ${v.name}}`
         )
         .join(", ");
 
       setError("");
-    } catch (error) {
-      setError("Parsing error: " + error.toString());
-    }
 
-    const output = `<html>
+      const output = `<html>
                       <style>
                         /* css */
                       </style>
@@ -58,14 +57,17 @@ const Index: FunctionComponent = () => {
                         </script>
                       </body>
                   </html>`;
-    setOutputValue(output);
+      setOutputValue(output);
+    } catch (error) {
+      setError("Parsing error: " + error.toString());
+    }
   }, [debouncedJs]);
 
   useEffect(() => {
     window.addEventListener("message", ({ data: { ready, vars, error } }) => {
       if (ready) {
         setVariables(vars);
-      } else if(error) {
+      } else if (error) {
         setError(error);
       }
     });
@@ -82,10 +84,19 @@ const Index: FunctionComponent = () => {
       <div className={styles.main}>
         <DynamicJavaScriptEditor value={jsValue} onChange={setJsValue} />
         <div className={styles.displayWindow}>
-          {error || variables.map(({ name, value, kind, type }) => (
-            <VariableGem key={name} name={name} value={value} kind={kind} type={type} />
+          {variables.map(({ name, value, kind, type }) => (
+            <VariableGem
+              key={name}
+              name={name}
+              value={value}
+              kind={kind}
+              type={type}
+            />
           ))}
         </div>
+        <p className={`${styles.error} ${error ? styles.errorShow : ""}`}>
+          {error}
+        </p>
       </div>
     </>
   );
