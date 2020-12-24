@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# DigitalOcean App Platform static release
+_static
